@@ -3,101 +3,93 @@
 #include<malloc.h>
 int main(int argc, char *argv[])
 {
-	OnlyMnemonicTolabeltemp0:;
-	int  tempreturn;
+	int  intreturn=0;
 	char * temp1;
 	char * temp2;
-	char * temp3;
 	char * temp4;
-	tempreturn=0;
 	temp1=(char *)malloc(7);
 	if(temp1==NULL)
 	{
 		printf("Malloc error.\r\n");
-		tempreturn=-1;
-		goto labeltemp0;
+		intreturn=-1;
+		goto proceerror1;
 	}
 	else
 	{
 	}
-	OnlyMnemonicTolabeltemp1:
 	temp1[0]='H';  temp1[1]='e';  temp1[2]='l';  temp1[3]='l';  temp1[4]='o';  temp1[5]=' ';  temp1[6]=0;
 	temp2=(char *)malloc(7);
 	if(temp2==NULL)
 	{
 		printf("Malloc error.\r\n");
-		tempreturn=-1;
-		goto labeltemp1;
+		intreturn=-1;
+		goto proceerror2;
 	}
 	else
 	{
 	}
-	OnlyMnemonicTolabeltemp2:
 	temp2[0]='w';  temp2[1]='o';  temp2[2]='r';  temp2[3]='l';  temp2[4]='d';  temp2[5]='.';  temp2[6]=0;
 	temp4=(char *)malloc(3);
 	if(temp4==NULL)
 	{
 		printf("Malloc error.\r\n");
-		tempreturn=-1;
-		goto labeltemp2;
+		intreturn=-1;
+		goto proceerror3;
 	}
 	else
 	{
 	}
-	OnlyMnemonicTolabeltemp4:
 	temp4[0]='\r';  temp4[1]='\n';  temp4[2]=0;
 	if( printf("%s",temp1)<0 )
 	{
-		tempreturn=-1;
-		goto labeltemp4;
+		intreturn=-1;
+		goto proceerror4;
 	}
 	else 
 	{
 	}
-	labeltemp4:
-	temp3=temp4;
-	temp4=temp1;
-	free(temp4);
-	temp1=temp2;
-	temp2=temp3;
-	if(tempreturn==-1)
-	{
-		goto labeltemp2;
-	}
-	else
-	{
-	}
-	if( printf("%s",temp1)<0 )
-	{
-		tempreturn=-1;
-		goto labeltemp2;
-	}
-	else 
-	{
-	}
-	labeltemp2:
-	temp3=temp2;
-	temp2=temp1;
-	free(temp2);
-	temp1=temp3;
-	if(tempreturn==-1)
-	{
-		goto labeltemp1;
-	}
-	else
-	{
-	}
-	if( printf("%s",temp1)<0 )
-	{
-		tempreturn=-1;
-		goto labeltemp1;
-	}
-	else 
-	{
-	}
-	labeltemp1:
 	free(temp1);
-	labeltemp0:;
-	return tempreturn;
+	if( printf("%s",temp2)<0 )
+	{
+		intreturn=-1;
+		goto proceerror5;
+	}
+	else 
+	{
+	}
+	free(temp2);
+	if( printf("%s",temp4)<0 )
+	{
+		intreturn=-1;
+		goto proceerror6;
+	}
+	else 
+	{
+	}
+	free(temp4);
+	goto proceerrorend;
+	proceerror1:
+	return intreturn;
+	proceerror2:
+	free(temp1);
+	return intreturn;
+	proceerror3:
+	free(temp1);
+	free(temp2);
+	return intreturn;
+	proceerror4:
+	free(temp1);
+	free(temp2);
+	free(temp4);
+	return intreturn;
+	proceerror5:
+	free(temp2);
+	free(temp4);
+	return intreturn;
+	proceerror6:
+	free(temp4);
+	return intreturn;
+	proceerrorend:
+	return intreturn;
 }
 
