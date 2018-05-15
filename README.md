@@ -16,4 +16,6 @@ helloworld111.c    ,
 helloworld222.c    ,   
 helloworld333.c    ,
 
-demonstrate a mind,I think this mind let program look clear and resource quickly release and easy error process.
+helloworldmethod2.c    ,
+
+demonstrate some minds,I think this mind let program look clear and resource quickly release and easy error process.
