@@ -22,4 +22,6 @@ demonstrate some minds,I think this mind let program look clear and resource qui
 
 
 Folder simplifycalculations
+
+
     Some preliminary rough analysis of the result of 1+2*2+3*3+4*4+5*5+......n*n and the volume calculation of the square cone.
