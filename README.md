@@ -20,6 +20,9 @@ helloworldmethod2.c    ,
 
 demonstrate some minds,I think this mind let program look clear and resource quickly release and easy error process.
 
+Taking helloworldmethod2.c as an example, facing complex situations, "try and try and try" to use a goto statement to jump to the error handling module for "EACH" error. this makes it easier to backtrack and analyze each error handling path. all normal malloc and free are at the same indentation depth.
+
+
 
 Folder simplifycalculations
 
