@@ -45,3 +45,14 @@ Some conjectures
 An ordered field contains a medium. Energy is rapidly transferred through this medium. Energy clusters cut through the medium, and multiple cuts form medium fragments. These fragments may curl and contract to form electrons. Energy clusters in a chaotic state may dissipate rapidly due to the healing effect of the medium. Imagine a ring stopped by a smooth obstacle. A thick rod passes through the space in the center of the ring, causing it to rotate. Large medium fragments might form such rotating rings, much like protons.
 
 Electrons might be formed by the random curling and contraction of medium fragments into spheres. Positrons might, in rare cases, form rings, making collisions and annihilation between positrons and electrons more likely. The case of a particle being its own antiparticle might resemble a hollow gear; two hollow gears rotating in opposite directions and coming together are prone to annihilation.
+
+
+It is very important to note that the following are some conjectures, translated into English by machine:
+
+The dominant factor in electromagnetism is the contraction of the ordered field medium segment, i.e., the electron.
+The dominant factor in strong interaction is the rapid back-and-forth oscillation of the overall ordered field at the fracture point.
+To cope with this extreme oscillation, the ring-shaped medium block, i.e., the proton, undergoes a "special inward and outward flipping motion." The electron, situated between these two extreme motions, exists in a kind of "equilibrium state," which I believe is why electrons are largely absent from strong interaction.
+Gravity may be the macroscopic manifestation of this "extreme oscillation."
+
+For weak interaction, in negative beta decay, the "hollow part" of the ring-shaped medium block, i.e., the proton, during contraction, confines the electron, causing it to escape and "produce" antineutrinos. Positive beta decay may involve energy impacting the narrow hollow part of the ring-shaped medium block, producing ring-shaped positrons and electron neutrinos. The energy also enlarges the hollow part of the ring-shaped medium block to a certain extent, allowing the produced electrons to continuously pass through, thus forming neutrons. This suggests that this process may require external energy input.
+
