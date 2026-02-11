@@ -74,17 +74,13 @@ int main(int argc, char *argv[])
 	free(temp1);
 	return intreturn;
 	proceerror3:
-	free(temp1);
-	free(temp2);
+	free(temp1);  free(temp2);
 	return intreturn;
 	proceerror4:
-	free(temp1);
-	free(temp2);
-	free(temp4);
+	free(temp1);  free(temp2);  free(temp4);
 	return intreturn;
 	proceerror5:
-	free(temp2);
-	free(temp4);
+	free(temp2);  free(temp4);
 	return intreturn;
 	proceerror6:
 	free(temp4);
