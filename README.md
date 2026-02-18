@@ -58,3 +58,5 @@ Gravity may be the macroscopic manifestation of this "extreme oscillation."
 
 For weak interaction, in negative beta decay, the "hollow part" of the ring-shaped medium block, i.e., the proton, during contraction, confines the electron, causing it to escape and "produce" antineutrinos. Positive beta decay may involve energy impacting the narrow hollow part of the ring-shaped medium block, producing ring-shaped positrons and electron neutrinos. The energy also enlarges the hollow part of the ring-shaped medium block to a certain extent, allowing the produced electrons to continuously pass through, thus forming neutrons. This suggests that this process may require external energy input.
 
+important111
+			Record some of the more important discoveries

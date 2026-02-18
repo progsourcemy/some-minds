@@ -1,0 +1,5 @@
+---
+			Regarding Linux folder permissions, theoretically speaking, in many cases, if only execute permissions are granted, it's highly possible to simulate read permissions by brute-force exhaustive searches of all possibilities, such as repeatedly using `cat`. I think  above description perhaps  highlights the security sensitivity of folder execute permissions, providing a very clear warning about their unintuitive and counterintuitive nature.
+---
+			When a user forces vim to write a read-only file (:w!), vim may silently replace the original file with a new one owned by the current user. This behavior can have serious security implications that are not communicated in the warning message shown to the user.
+---
