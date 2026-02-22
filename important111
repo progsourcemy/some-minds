@@ -3,3 +3,8 @@
 ---
 			When a user forces vim to write a read-only file (:w!), vim may silently replace the original file with a new one owned by the current user. This behavior can have serious security implications that are not communicated in the warning message shown to the user.
 ---
+			in bash
+						echo   "123""456"
+									123456
+												Important methods to avoid unnecessary over-techniques
+---
