@@ -1,4 +1,7 @@
 ---
+			Referring to the algorithm derivation process in the "SimplifyCalculations" folder, a more intuitive method is better for establishing a solid foundation. Otherwise, uncertainty may increase unpredictably, and the risks could be unimaginable. I think more intuitive methods are worth refining and summarizing, and I will try  to record such summaries in this file.
+
+---
 			Regarding Linux folder permissions, theoretically speaking, in many cases, if only execute permissions are granted, it's highly possible to simulate read permissions by brute-force exhaustive searches of all possibilities, such as repeatedly using `cat`. I think  above description perhaps  highlights the security sensitivity of folder execute permissions, providing a very clear warning about their unintuitive and counterintuitive nature.
 ---
 			When a user forces vim to write a read-only file (:w!), vim may silently replace the original file with a new one owned by the current user. This behavior can have serious security implications that are not communicated in the warning message shown to the user.
@@ -11,4 +14,9 @@
 												Important methods to avoid unnecessary over-techniques
 ---
 			It's worth noting whether having two or more owners for files in a folder could pose security risks.
+---
+			The GNU Bash Reference Manual
+						https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
+---
+			Differences between different versions of bash, and appropriate choices between bash's internal functions and Linux commands.
 ---
