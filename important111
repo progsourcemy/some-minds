@@ -6,5 +6,7 @@
 			in bash
 						echo   "123""456"
 									123456
+						echo   '123''456'
+									123456
 												Important methods to avoid unnecessary over-techniques
 ---
