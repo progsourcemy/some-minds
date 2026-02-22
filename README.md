@@ -3,6 +3,12 @@ about program   algorithm and so on   minds
 
 The file   
 
+important111
+			Referring to the algorithm derivation process in the "SimplifyCalculations" folder, a more intuitive method is better for establishing a solid foundation. Otherwise, uncertainty may increase unpredictably, and the risks could be unimaginable. I think more intuitive methods are worth refining and summarizing, and I will try  to record such summaries in file  important111.
+			
+			Record some of the more important discoveries
+
+
 overflowtest.c
 
 demonstrate a methid to  process  overflow.
@@ -58,5 +64,4 @@ Gravity may be the macroscopic manifestation of this "extreme oscillation."
 
 For weak interaction, in negative beta decay, the "hollow part" of the ring-shaped medium block, i.e., the proton, during contraction, confines the electron, causing it to escape and "produce" antineutrinos. Positive beta decay may involve energy impacting the narrow hollow part of the ring-shaped medium block, producing ring-shaped positrons and electron neutrinos. The energy also enlarges the hollow part of the ring-shaped medium block to a certain extent, allowing the produced electrons to continuously pass through, thus forming neutrons. This suggests that this process may require external energy input.
 
-important111
-			Record some of the more important discoveries
+			
