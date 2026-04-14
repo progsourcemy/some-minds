@@ -22,3 +22,9 @@
 ---
 			Differences between different versions of bash, and appropriate choices between bash's internal functions and Linux commands.
 ---
+			It's worth noting the differences between bash software versions, the differences between the official bash version and customized versions, and potentially very dangerous options like nullglob, failglob, nocaseglob, and dotglob. In summary, testing is extremely important. This document strives to present some aspects of bash's architecture accurately and clearly, but another crucial aspect is whether, given bash's complexities, using another  "computer language"  is worth considering.
+
+			I suspect that deep integration with bash might require a fairly robust backup system, access to valuable internal documentation that is difficult to access, and possibly substantial consulting fees.
+			
+			see    bash111.png
+---
