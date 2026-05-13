@@ -101,7 +101,11 @@ void sort222(int * p,const int n)
 
 	int * ps111=0;int * pd111=0;int * pt111=0;int * pt555=0;int  p11=0;int  p12=0;int  p13=0;int l111=0;int l222=0;int l333=0;int yl111=0;int y111=0;int yl222=0;int y222=0;int t111=0;int i111=0;int i222=0;int i333=0;int tempsw111=0;char yb111=0;char b11111=1;int s111=0;int i=0;int i555=0;
 
-
+if(n<30)
+{
+	printf("Sorting elements with fewer than 30 elements will not be processed for the time being.\r\n");
+	return;
+}
 	ps111=p;
 
 	
