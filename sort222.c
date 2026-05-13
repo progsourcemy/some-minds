@@ -63,6 +63,16 @@ at their own discretion.
 
 This is only a technical exploration and experiment.
 
+
+
+
+Extreme cases—such as sorting a single element, two elements, and so forth—require thorough testing and careful analysis; therefore, sorting operations for fewer than 30 elements will be deferred for the time being.
+
+
+
+
+
+
 */
 
 
