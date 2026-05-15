@@ -65,67 +65,82 @@ This is only a technical exploration and experiment.
 
 
 
-
-Extreme cases—such as sorting a single element, two elements, and so forth—require thorough testing and careful analysis; therefore, sorting operations for fewer than 30 elements will be deferred for the time being.
-
-
-
-
-
-
 */
+
+char globalbbb111=0;  /* 1   to  skip   print       first  3 number   last number   miiddle  sone number      */
 
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<malloc.h>
 #include <string.h>
+
+
 inline __attribute__((always_inline))  void sort22222(int * ps111,int * pd111,int l111,int l222,int l333,int p11,int p12,int p13)
 {
-	int i333=0;int l22222=0;int l33333=0;int i555=0;
-	l22222=p12+l222-1;l33333=p13+l333-1;
+	int i333=0;/*int l11111=0;*/int * l22222=0;int * l33333=0;/*int i555=0;*/int * temp111=0;int * temp222=0;int * temp333=0;
+	/*l11111=p11+l111-1;*/l22222=ps111+p12+l222-1;l33333=ps111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps111+p13;
 	for(i333=0;i333<l111;i333++)
 	{
-			if( ( p12>l22222 ) || ( p13>l33333 ) )
+		
+			while(( temp222<=l22222 ) && ( temp333<=l33333 ))
 			{
-					if( p12>l22222 )
+					if( *(temp222)<*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
+					else if( *(temp222)>*( temp333  ) )  {*(temp111)=*(temp333);temp333++;temp111++;continue;}
+					else{*(temp111)=*(temp222);temp222++;temp111++;*(temp111)=*(temp333);temp333++;temp111++;continue;}
+			}
+			if( ( temp222>l22222 ) || ( temp333>l33333 ) )
+			{
+					if( temp222>l22222 )
 					{
-							if(p13<=l33333){  memcpy(pd111+p11,ps111+p13, (l33333-p13+1) * sizeof(int)  );return;  }                   
+							if(temp333<=l33333){  memcpy(temp111,temp333, (l33333-temp333+1) * sizeof(int)  );return;  }                   
 							else{ return; }
 					}
-					if( p13>l33333 )
+					if( temp333>l33333 )
 					{
-							if(p12<=l22222){  memcpy(pd111+p11,ps111+p12, (l22222-p12+1) * sizeof(int)  );return; ;  }              
+							if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return; ;  }              
 							else{ return; }
 					}
 			}
-			if( *(ps111+p12)<*(ps111+p13) )  {*(pd111+p11)=*(ps111+p12);p12++;p11++;continue;}
-			else if( *(ps111+p12)>*( ps111+p13) )  {*(pd111+p11)=*(ps111+p13);p13++;p11++;continue;}
-			else{*(pd111+p11)=*(ps111+p12);p12++;p11++;*(pd111+p11)=*(ps111+p13);p13++;p11++;continue;}
 	}
 	return;
 }
 
 void sort222(int * p,const int n)
 {
+	/*printf("%s---%d---%d\n","bbbbbbbbdbbb",*p,n);*/
+	int * ps111=0;int * pd111=0;int * pt111=0;/*int * pt222=0;*/int * pt555=0;int  p11=0;int  p12=0;int  p13=0;int l111=0;/*int l11111=0;*/int l222=0;/*int l22222=0;*/int l333=0;/*int l33333=0;*/int yl111=0;int y111=0;int yl222=0;int y222=0;int t111=0;int i111=0;int i222=0;int i333=0;int tempsw111=0;char yb111=0;char b11111=1;int s111=0;int i=0;int i555=0;int * dang111=0;int * pt1111=0;int * pt1112=0;int * pt1113=0;int t222=0;int t333=0;int t555=0;
 
-	int * ps111=0;int * pd111=0;int * pt111=0;int * pt555=0;int  p11=0;int  p12=0;int  p13=0;int l111=0;int l222=0;int l333=0;int yl111=0;int y111=0;int yl222=0;int y222=0;int t111=0;int i111=0;int i222=0;int i333=0;int tempsw111=0;char yb111=0;char b11111=1;int s111=0;int i=0;int i555=0;
-
-if(n<30)
-{
-	printf("Sorting elements with fewer than 30 elements will not be processed for the time being.\r\n");
-	return;
-}
-	ps111=p;
-
-	
 	if(n<1){  return;  }
 	if(n==1){  return;  }
+	if(n==2)
+	{
+			if( *p > *(p+1) ){tempsw111=*p;*p=*(p+1);*(p+1)=tempsw111;}
+			return;
+	}
+	if(n==3)
+	{
+			if( *p > *(p+1) ){tempsw111=*p;*p=*(p+1);*(p+1)=tempsw111;}
+			if( *(p+1) > *(p+2) ){tempsw111=*(p+1);*(p+1)=*(p+2);*(p+2)=tempsw111;}else{return;}
+			if( *p > *(p+1) ){tempsw111=*p;*p=*(p+1);*(p+1)=tempsw111;}
+			return;
+	}
+	if(n==4)
+	{
+			if( *(p+1) > *(p+2) ){tempsw111=*(p+1);*(p+1)=*(p+2);*(p+2)=tempsw111;}
+			if( *p > *(p+3) ){tempsw111=*p;*p=*(p+3);*(p+3)=tempsw111;}
+			if( *p > *(p+2) ){tempsw111=*p;*p=*(p+1);*(p+1)=*(p+2);*(p+2)=tempsw111;return;}
+			if( *(p+1) > *(p+3) ){tempsw111=*(p+3);*(p+3)=*(p+2);*(p+2)=*(p+1);*(p+1)=tempsw111;return;}
+			if( *p > *(p+1) ){tempsw111=*p;*p=*(p+1);*(p+1)=tempsw111;}
+			if( *(p+2) > *(p+3) ){tempsw111=*(p+2);*(p+2)=*(p+3);*(p+3)=tempsw111;}
+			return;
+	}
+
+	ps111=p;
 	
 	pd111=malloc(n*sizeof(int));
 	pt555=pd111;
 	if(pd111==NULL){ printf("malloc111 error.\r\n");return;}
-	s111=(int)(n/4);
 	yl222=(int)(n%4);
 	if( yl222 > 0 )
 	{
@@ -145,19 +160,21 @@ if(n<30)
 			}
 			
 			cx555:
-
-			memcpy(pd111+y222,ps111+y222,yl222*sizeof(int));
+			dang111=pd111;
 	}
-
-	for(i=0;i<s111;i++)
+	i555=n-yl222;
+	for(i=0;i<i555;i+=4)
 	{
-			pt111=ps111+i*4;
-			if( *(pt111+1) > *(pt111+2) ){tempsw111=*(pt111+1);*(pt111+1)=*(pt111+2);*(pt111+2)=tempsw111;}
-			if( *pt111 > *(pt111+3) ){tempsw111=*pt111;*pt111=*(pt111+3);*(pt111+3)=tempsw111;}
-			if( *pt111 > *(pt111+2) ){tempsw111=*pt111;*pt111=*(pt111+1);*(pt111+1)=*(pt111+2);*(pt111+2)=tempsw111;continue;}
-			if( *(pt111+1) > *(pt111+3) ){tempsw111=*(pt111+3);*(pt111+3)=*(pt111+2);*(pt111+2)=*(pt111+1);*(pt111+1)=tempsw111;continue;}
-			if( *pt111 > *(pt111+1) ){tempsw111=*pt111;*pt111=*(pt111+1);*(pt111+1)=tempsw111;}
-			if( *(pt111+2) > *(pt111+3) ){tempsw111=*(pt111+2);*(pt111+2)=*(pt111+3);*(pt111+3)=tempsw111;}
+			pt111=ps111+i;
+			pt1111=pt111+1;
+			pt1112=pt111+2;
+			pt1113=pt111+3;
+			if( *(pt1111) > *(pt1112) ){tempsw111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;}
+			if( *pt111 > *(pt1113) ){tempsw111=*pt111;*pt111=*(pt1113);*(pt1113)=tempsw111;}
+			if( *pt111 > *(pt1112) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;continue;}
+			if( *(pt1111) > *(pt1113) ){tempsw111=*(pt1113);*(pt1113)=*(pt1112);*(pt1112)=*(pt1111);*(pt1111)=tempsw111;continue;}
+			if( *pt111 > *(pt1111) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=tempsw111;}
+			if( *(pt1112) > *(pt1113) ){tempsw111=*(pt1112);*(pt1112)=*(pt1113);*(pt1113)=tempsw111;}
 	}
 
 	t111=4;
@@ -166,7 +183,6 @@ if(n<30)
 	{	
 			s111=(int)( n/( t111*2 ) );
 			yl111=(int)( n%( t111*2 ) );
-
 			if( yl111 > 0 )
 			{
 					y111=n-yl111;
@@ -174,17 +190,28 @@ if(n<30)
 					{
 							if( y111!=y222 )
 							{
-									p11=y111;p12=y111;p13=n-yl222;l111=yl111;l222=yl111-yl222;l333=yl222;
+									if(ps111==dang111){   memcpy(ps111+y222,pd111+y222,yl222*sizeof(int));   }
+									p11=y111;p12=y111;p13=n-yl222;l111=yl111;l222=yl111-yl222;l333=yl222;/*l11111=l111-1;l22222=l222-1;l33333=l333-1;*/
+									
 									sort22222(ps111,pd111,l111,l222,l333,p11,p12,p13);
-									memcpy(ps111+y111,pd111+y111,yl111*sizeof(int));
+									dang111=ps111;
 									yl222=yl111;y222=y111;
 							}
 					}
-					else{memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));yb111=1;yl222=yl111;y222=y111;}
+					else
+					{
+							
+							if(t111>=4){dang111=pd111;}
+							yb111=1;yl222=yl111;y222=y111;
+					}
 			}
-			for(i222=0;i222<s111;i222++)
+			i555=n-yl111;
+			t222=t111*2;
+			for(i222=0;i222<i555;i222+=t222)
 			{
-					sort22222(ps111,pd111,t111*2,t111,t111,i222*t111*2,i222*t111*2,i222*t111*2+t111);
+					
+					t555=i222+t111;
+					sort22222(ps111,pd111,t222,t111,t111,i222,i222,t555);
 			}
 			pt111=ps111;  ps111=pd111;  pd111=pt111;  t111=t111*2;
 		
@@ -192,13 +219,34 @@ if(n<30)
 
 	if(yb111==1)
 	{
+			if(ps111==dang111){   memcpy(ps111+y222,pd111+y222,yl222*sizeof(int));   }
 			sort22222(ps111,pd111,n,t111,yl222,0,0,y222);
 			ps111=pd111;
 	}
 	if(p!=ps111){     memcpy(p,ps111,n*sizeof(int));  }else{     }
 	
-	free(pt555);
 
+		if(globalbbb111){  goto  cxttt111;    }	
+		if(n<15)
+		{
+				for(  i111=0;  i111<n;  i111++  ){  printf("\n\n\njjjjjjjjjjjjjj---%d---\n\n\n",*(p+i111));  }
+		}
+		else
+		{
+				printf("\n\n\njjjjjjjjjjjjjj---%d---\n",*(p));
+				printf("jjjjjjjjjjjjjj---%d---\n",*(p+1));
+				printf("jjjjjjjjjjjjjj---%d---\n\n\n",*(p+2));
+				i222=n/2-5;i333=i222+10;
+				for(  i111=i222;  i111<i333;  i111++  ){  printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));  }
+				printf("\n\n\njjjjjjjjjjjjjj---%d---\n",*(p+n-3));
+				printf("jjjjjjjjjjjjjj---%d---\n",*(p+n-2));
+				printf("jjjjjjjjjjjjjj---%d---\n\n\n",*(p+n-1));
+		}
+
+cxttt111:	
+
+	free(pt555);
+	
 	return;
 }
 
@@ -222,10 +270,10 @@ int main(int argc, char *argv[])
 	*(p+30)=80;*(p+31)=80;
 
 	
-	sort222(p,32);
+	sort222(p,28);
 	
 	
-	for(  i111=0;  i111<32;  i111++  )
+	for(  i111=0;  i111<28;  i111++  )
 	{
 				printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));
 	}
