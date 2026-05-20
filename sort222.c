@@ -68,7 +68,8 @@ This is only a technical exploration and experiment.
 					include 2^n+1 
 2026-05-20
 			Some optimizations include in-place memory rollback and optimizations to comparison statements.
-
+2026-05-21 
+			Some optimizations.
 */
 
 char globalbbb111=1;  /* 1   to  skip   print         */
@@ -85,7 +86,7 @@ inline __attribute__((always_inline))  void sort55555(int * ps111,int * pd111,in
 	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;int * ps333=0;int * l11111=0;
 	/*l22222=ps111+p12+l222-1;l33333=ps111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps111+p13;*/
 	l22222=ps111+p12;l33333=ps111+p13;temp111=pd111+p11+l222+l333-1;temp222=ps111+p12+l222-1;temp333=ps111+p13+l333-1;l11111=pd111+p11;
-	while(( temp222>=l22222 ) && ( temp333>=l33333 ))
+	/*while(( temp222>=l22222 ) && ( temp333>=l33333 ))
 	{
 			if( *(temp222)>=*(temp333) )  {*(temp111)=*(temp222);temp222--;temp111--;continue;}
 			else  						  {*(temp111)=*(temp333);temp333--;temp111--;continue;}
@@ -99,7 +100,24 @@ inline __attribute__((always_inline))  void sort55555(int * ps111,int * pd111,in
 	{
 			if(temp222>=l22222){  memcpy(l11111,l22222, (temp222-l22222+1) * sizeof(int)  );return;  }              
 			else{ return; }
-	}
+	}*/
+
+
+
+	lll222:
+	if( *(temp222)>=*(temp333) ){  }else{ goto  lll333333; }
+	lll222222:
+	*(temp111)=*(temp222);temp222--;temp111--;if( temp222>=l22222){  goto  lll222;  };
+	if(temp333>=l33333){  memcpy(l11111,l33333, (temp333-l33333+1) * sizeof(int)  );return;  }                   
+	else{ return; }
+	return;
+	lll333:
+	if( *(temp222)>=*(temp333) ){ goto  lll222222; }else{  }
+	lll333333:
+	*(temp111)=*(temp333);temp333--;temp111--;if( temp333>=l33333){  goto  lll333;  };
+	if(temp222>=l22222){  memcpy(l11111,l22222, (temp222-l22222+1) * sizeof(int)  );return;  }              
+	else{ return; }
+
 	return;
 }
 
@@ -109,7 +127,7 @@ inline __attribute__((always_inline))  void sort33333(int * ps111,int * pd111,in
 {
 	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;
 	l22222=ps111+p12+l222-1;l33333=pd111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=pd111+p13;
-	while(( temp222<=l22222 ) && ( temp333<=l33333 ))
+	/*while(( temp222<=l22222 ) && ( temp333<=l33333 ))
 	{
 			if( *(temp222)<=*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
 			else{*(temp111)=*(temp333);temp333++;temp111++;continue;}
@@ -122,7 +140,20 @@ inline __attribute__((always_inline))  void sort33333(int * ps111,int * pd111,in
 	{
 			if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
 			else{ return; }
-	}
+	}*/
+
+	lll222:
+	if( *(temp222)<=*(temp333) ){  }else{ goto  lll333333; }
+	lll222222:
+	*(temp111)=*(temp222);temp222++;temp111++;if( temp222<=l22222){  goto  lll222;  };
+	return;
+	lll333:
+	if( *(temp222)<=*(temp333) ){ goto  lll222222; }else{  }
+	lll333333:
+	*(temp111)=*(temp333);temp333++;temp111++;if( temp333<=l33333){  goto  lll333;  };
+	if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
+	else{ return; }
+
 	return;
 }
 
@@ -131,7 +162,8 @@ inline __attribute__((always_inline))  void sort22222(int * ps111,int * pd111,in
 {
 	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;int * ps333=0;
 	l22222=ps111+p12+l222-1;l33333=ps111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps111+p13;
-	while(( temp222<=l22222 ) && ( temp333<=l33333 ))
+	
+	/*while(( temp222<=l22222 ) && ( temp333<=l33333 ))
 	{
 			if( *(temp222)<=*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
 			else{*(temp111)=*(temp333);temp333++;temp111++;continue;}
@@ -145,7 +177,22 @@ inline __attribute__((always_inline))  void sort22222(int * ps111,int * pd111,in
 	{
 			if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
 			else{ return; }
-	}
+	}*/
+
+	lll222:
+	if( *(temp222)<=*(temp333) ){  }else{ goto  lll333333; }
+	lll222222:
+	*(temp111)=*(temp222);temp222++;temp111++;if( temp222<=l22222){  goto  lll222;  };
+	if(temp333<=l33333){  memcpy(temp111,temp333, (l33333-temp333+1) * sizeof(int)  );return;  }                   
+	else{ return; }
+	return;
+	lll333:
+	if( *(temp222)<=*(temp333) ){ goto  lll222222; }else{  }
+	lll333333:
+	*(temp111)=*(temp333);temp333++;temp111++;if( temp333<=l33333){  goto  lll333;  };
+	if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
+	else{ return; }
+
 	return;
 }
 
@@ -238,25 +285,31 @@ void sort222(int * p,const int n)
 									{
 											yb222=5;
 											t666=1;
+											/*   ----------------   需要三列合并  设置标志  		按目前的情况是 三个数列  A B C     A 与 B  数目相同    C 规模较小, C 应该是真正的余数部分 ,先合并 B C 成为 D  数列,此时开始对 A 与 D 进行特殊合并排序,开始的目标缓存是对面缓存的  数列  A 的对应部分,这样进行应该会完成     ----------------------   */
+											
+											/*  余数部分与 t111 块的合并排序  */
+											
+											/*  余数部分与 t111 块的合并排序后与另一个 t111 块合并排序  */
 										
 									}else
 									{		
+											/*  上次也是三列合并  */
 											yb222=4;
 									}
 							}
 					}
 					else
-					{
+					{		/*   ----------------   如果  本次  有余数  而  上次  没有余数     ----------------------   */
 							yb222=1;
 					}
 			}
-			else{    }    
+			else{    }    /* 无余数  */
 			
 			if(    ( o111==1 ) && ( yb222!=0 )    ){  goto  ysk111;  }
 			
-qbk111:		
+qbk111:		/*  前部块代码段  */
 
-			if(o111==0) 
+			if(o111==0)  /*  顺序  */
 			{
 					i555=y111-t222*t666;
 					for(i222=0;i222<i555;i222+=t222)
@@ -264,17 +317,17 @@ qbk111:
 							sort22222(ps111,pd111,t111,t111,i222,i222,i222+t111);
 					}
 			}
-			else if (o111==2)  
+			else if (o111==2)  /*  倒序  */
 			{
 					i555=y111-t222*t666-t222;
 					for(i222=i555;i222>=0;i222-=t222)
 					{
 							sort55555(ps111,pd111,t111,t111,i222,i222,i222+t111);
 					}
-					goto  jw111;  
+					goto  jw111;  /*  逆序前部段处理完成 跳转本次循环结尾处理段  */
 			}
 			else
-			{  
+			{  /*  无余数  且是倒序处理  跳转次循环结尾处理段*/
 
 						i555=y111-t222*t666-t222;
 						for(i222=i555;i222>=0;i222-=t222)
@@ -286,42 +339,42 @@ qbk111:
 
 			
 			
-ysk111:		
+ysk111:		/*  余数块代码段  */
 
 
-			if(yb222==1)  
+			if(yb222==1)  /*   本次有余数上次无余数   */
 			{
 					memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));
 					yb111=1;yl222=yl111;y222=y111;
 			}
-			if(yb222==2)  
+			if(yb222==2)  /*   本次上次  都有余数  且  余数有变化  但是上次    是      三列合并   */
 			{
 					memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));
 					yl222=yl111;y222=y111;
 			}
-			if(yb222==3)  
+			if(yb222==3)  /*   本次上次  都有余数  且  余数有变化  但是上次    不是     三列合并   */
 			{
 					p11=y111;p12=y111;p13=y222;l222=t111;l333=yl222;
 					if(o111==0)   {  sort22222(ps111,pd111,l222,l333,p11,p12,p13);  }
 					else          {  sort55555(ps111,pd111,l222,l333,p11,p12,p13);  }
 					yl222=yl111;y222=y111;
 			}
-			if(yb222==4)  
+			if(yb222==4)  /*   本次上次  都有余数  且  余数无变化  但是上次    是      三列合并   */
 			{
 					p11=y111-t222;p12=p11;p13=y222-t111;
 					if(o111==0)   {  sort22222(ps111,pd111,t111,t111+yl222,p11,p12,p13);  }
 					else          {  sort55555(ps111,pd111,t111,t111+yl222,p11,p12,p13);  }
 			}
-			if(yb222==5)  
+			if(yb222==5)  /*   本次上次  都有余数  且  余数无变化  但是上次    不是     三列合并   */
 			{
-					
+					/*  余数部分与 t111 块的合并排序  */
 					p11=y111-t111;p12=p11;p13=y222;/*l111=yl111;*/l222=t111;l333=yl222;
 
 
 					if(o111==0)   {  sort22222(ps111,pd111,t111,l333,p11,p12,p13);  }
 					else          {  sort55555(ps111,pd111,t111,l333,p11,p12,p13);  }
 			
-					
+					/*  余数部分与 t111 块的合并排序后与另一个 t111 块合并排序  */
 					p11=p11-t111;p12=p11;p13=p13-t111;/*l111=yl111;l222=t111;l333=t111+yl222;*/
 					sort33333(ps111,pd111,t111,t111+yl222,p11,p12,p13);
 			}
@@ -365,18 +418,17 @@ jw111:
 	{
 			printf("jjjjjjjjjjjjjj---%d---\n",*(p));
 			printf("jjjjjjjjjjjjjj---%d---\n",*(p+1));
-			printf("jjjjjjjjjjjjjj---%d---\n\n\n",*(p+2));
+			printf("jjjjjjjjjjjjjj---%d---\n",*(p+2));
 			i222=n/2-1;i333=i222+2;
-			for(  i111=i222;  i111<i333;  i111++  ){  printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));  }
-			printf("\n\n\njjjjjjjjjjjjjj---%d---\n",*(p+n-3));
-			printf("jjjjjjjjjjjjjj---%d---\n",*(p+n-2));
-			printf("jjjjjjjjjjjjjj---%d---\n",*(p+n-1));
+			for(  i111=i222;  i111<i333;  i111++  ){  printf("jjjjjjjjjjjjjj---%d---------\n",*(p+i111));  }
+			printf("jjjjjjjjjjjjjj---%d------------------\n",*(p+n-3));
+			printf("jjjjjjjjjjjjjj---%d------------------\n",*(p+n-2));
+			printf("jjjjjjjjjjjjjj---%d------------------\n",*(p+n-1));
 	}
 
 cxttt111:	
 
 	free(pt555);
-	
 	return;
 }
 
