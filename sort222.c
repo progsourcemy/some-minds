@@ -66,6 +66,8 @@ This is only a technical exploration and experiment.
 2026-05-19
 			Optimize 
 					include 2^n+1 
+2026-05-20
+			Some optimizations include in-place memory rollback and optimizations to comparison statements.
 
 */
 
@@ -78,44 +80,78 @@ char globalbbb111=1;  /* 1   to  skip   print         */
 #include <string.h>
 
 
-inline __attribute__((always_inline))  void sort22222(int * ps111,int * pd111,int l222,int l333,int p11,int p12,int p13,char f111)
+inline __attribute__((always_inline))  void sort55555(int * ps111,int * pd111,int l222,int l333,int p11,int p12,int p13)
 {
-	/*int i333=0;int l11111=0;*/int * l22222=0;int * l33333=0;/*int i555=0;*/int * temp111=0;int * temp222=0;int * temp333=0;int * ps333=0;
-	if(f111==0){ps333=ps111;}else{ps333=pd111;}
-	/*l11111=p11+l111-1;*/l22222=ps111+p12+l222-1;l33333=ps333+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps333+p13;
-	/*for(i333=0;i333<l111;i333++)
-	{*/
-		
-			while(( temp222<=l22222 ) && ( temp333<=l33333 ))
-			{
-					if( *(temp222)<*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
-					else if( *(temp222)>*( temp333  ) )  {*(temp111)=*(temp333);temp333++;temp111++;continue;}
-					else{*(temp111)=*(temp222);temp222++;temp111++;*(temp111)=*(temp333);temp333++;temp111++;continue;}
-			}
-			/*if( ( temp222>l22222 ) || ( temp333>l33333 ) )
-			{*/
-			if( temp222>l22222 )
-			{
-					if(f111==1){return;}
-					/*if(p13>l33333){ return; }
-					else{  memcpy(pd111+p11,ps111+p13, (l33333-p13+1) * sizeof(int)  );return;  }*/
-					if(temp333<=l33333){  memcpy(temp111,temp333, (l33333-temp333+1) * sizeof(int)  );return;  }                   
-					else{ return; }
-			}
-			if( temp333>l33333 )
-			{
-					if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return; ;  }              
-					else{ return; }
-			}
-			/*}*/
-	/*}*/
+	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;int * ps333=0;int * l11111=0;
+	/*l22222=ps111+p12+l222-1;l33333=ps111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps111+p13;*/
+	l22222=ps111+p12;l33333=ps111+p13;temp111=pd111+p11+l222+l333-1;temp222=ps111+p12+l222-1;temp333=ps111+p13+l333-1;l11111=pd111+p11;
+	while(( temp222>=l22222 ) && ( temp333>=l33333 ))
+	{
+			if( *(temp222)>=*(temp333) )  {*(temp111)=*(temp222);temp222--;temp111--;continue;}
+			else  						  {*(temp111)=*(temp333);temp333--;temp111--;continue;}
+	}
+	if( temp222<l22222 )
+	{
+			if(temp333>=l33333){  memcpy(l11111,l33333, (temp333-l33333+1) * sizeof(int)  );return;  }                   
+			else{ return; }
+	}
+	if( temp333<l33333 )
+	{
+			if(temp222>=l22222){  memcpy(l11111,l22222, (temp222-l22222+1) * sizeof(int)  );return;  }              
+			else{ return; }
+	}
+	return;
+}
+
+
+
+inline __attribute__((always_inline))  void sort33333(int * ps111,int * pd111,int l222,int l333,int p11,int p12,int p13)
+{
+	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;
+	l22222=ps111+p12+l222-1;l33333=pd111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=pd111+p13;
+	while(( temp222<=l22222 ) && ( temp333<=l33333 ))
+	{
+			if( *(temp222)<=*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
+			else{*(temp111)=*(temp333);temp333++;temp111++;continue;}
+	}
+	if( temp222>l22222 )
+	{
+			return;
+	}
+	if( temp333>l33333 )
+	{
+			if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
+			else{ return; }
+	}
+	return;
+}
+
+
+inline __attribute__((always_inline))  void sort22222(int * ps111,int * pd111,int l222,int l333,int p11,int p12,int p13)
+{
+	int * l22222=0;int * l33333=0;int * temp111=0;int * temp222=0;int * temp333=0;int * ps333=0;
+	l22222=ps111+p12+l222-1;l33333=ps111+p13+l333-1;temp111=pd111+p11;temp222=ps111+p12;temp333=ps111+p13;
+	while(( temp222<=l22222 ) && ( temp333<=l33333 ))
+	{
+			if( *(temp222)<=*(temp333) )  {*(temp111)=*(temp222);temp222++;temp111++;continue;}
+			else{*(temp111)=*(temp333);temp333++;temp111++;continue;}
+	}
+	if( temp222>l22222 )
+	{
+			if(temp333<=l33333){  memcpy(temp111,temp333, (l33333-temp333+1) * sizeof(int)  );return;  }                   
+			else{ return; }
+	}
+	if( temp333>l33333 )
+	{
+			if(temp222<=l22222){  memcpy(temp111,temp222, (l22222-temp222+1) * sizeof(int)  );return;  }              
+			else{ return; }
+	}
 	return;
 }
 
 void sort222(int * p,const int n)
 {
-	
-	int * ps111=0;int * pd111=0;int * pt111=0;/*int * pt222=0;*/int * pt555=0;int  p11=0;int  p12=0;int  p13=0;/*int l111=0;int l11111=0;*/int l222=0;/*int l22222=0;*/int l333=0;/*int l33333=0;*/int yl111=0;int y111=0;int yl222=0;int y222=0;int t111=0;int i111=0;int i222=0;int i333=0;int tempsw111=0;char yb111=0;/*char b11111=1;*//*int s111=0;*/int i=0;int i555=0;/*int * dang111=0;*/int * pt1111=0;int * pt1112=0;int * pt1113=0;int t222=0;int t333=0;/*int t555=0;*/char t666=0;
+	int * ps111=0;int * pd111=0;int * pt111=0;int * pt555=0;int  p11=0;int  p12=0;int  p13=0;int l222=0;int l333=0;int yl111=0;int y111=0;int yl222=0;int y222=0;int t111=0;int i111=0;int i222=0;int i333=0;int tempsw111=0;char yb111=0;int i=0;int i555=0;int * pt1111=0;int * pt1112=0;int * pt1113=0;int t222=0;int t333=0;char t666=0;char o111=0;char yb222=0;
 
 	if(n<1){  return;  }
 	if(n==1){  return;  }
@@ -141,21 +177,29 @@ void sort222(int * p,const int n)
 			if( *(p+2) > *(p+3) ){tempsw111=*(p+2);*(p+2)=*(p+3);*(p+3)=tempsw111;}
 			return;
 	}
-
-
 	ps111=p;
-										
-
-	
 	pd111=malloc(n*sizeof(int));
 	if(pd111==NULL){ printf("malloc111 error.\r\n");return;}
 	pt555=pd111;
-	/*s111=(int)(n/4);*/
 	yl222=(int)(n%4);
 	y222=n-yl222;
 	
+	for(i=0;i<y222;i+=4)
+	{
+			pt111=ps111+i;
+			pt1111=pt111+1;
+			pt1112=pt111+2;
+			pt1113=pt111+3;
+			if( *(pt1111) > *(pt1112) ){tempsw111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;}
+			if( *pt111 > *(pt1113) ){tempsw111=*pt111;*pt111=*(pt1113);*(pt1113)=tempsw111;}
+			if( *pt111 > *(pt1112) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;continue;}
+			if( *(pt1111) > *(pt1113) ){tempsw111=*(pt1113);*(pt1113)=*(pt1112);*(pt1112)=*(pt1111);*(pt1111)=tempsw111;continue;}
+			if( *pt111 > *(pt1111) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=tempsw111;}
+			if( *(pt1112) > *(pt1113) ){tempsw111=*(pt1112);*(pt1112)=*(pt1113);*(pt1113)=tempsw111;}
+	}
+	
 	if( yl222 > 0 )
-	{		
+	{		/*   ----------------   有余数  yl222      ----------------------   */
 			yb111=1;pt111=ps111+y222;
 			if(yl222==1){   }
 			else if(yl222==2)
@@ -171,101 +215,148 @@ void sort222(int * p,const int n)
 			
 			cx555:
 	}
-	for(i=0;i<y222;i+=4)
-	{
-			pt111=ps111+i;
-			pt1111=pt111+1;
-			pt1112=pt111+2;
-			pt1113=pt111+3;
-			if( *(pt1111) > *(pt1112) ){tempsw111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;}
-			if( *pt111 > *(pt1113) ){tempsw111=*pt111;*pt111=*(pt1113);*(pt1113)=tempsw111;}
-			if( *pt111 > *(pt1112) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=*(pt1112);*(pt1112)=tempsw111;continue;}
-			if( *(pt1111) > *(pt1113) ){tempsw111=*(pt1113);*(pt1113)=*(pt1112);*(pt1112)=*(pt1111);*(pt1111)=tempsw111;continue;}
-			if( *pt111 > *(pt1111) ){tempsw111=*pt111;*pt111=*(pt1111);*(pt1111)=tempsw111;}
-			if( *(pt1112) > *(pt1113) ){tempsw111=*(pt1112);*(pt1112)=*(pt1113);*(pt1113)=tempsw111;}
-	}
 
-	t111=4;t222=8;
+	t111=4;t222=8;o111=1;
 	
 	while( ( t222 ) <= n )
 	{	
 			yl111=(int)( n%( t222 ) );
 			y111=n-yl111;
 			if( yl111 > 0 )
-			{		
+			{		/*   ----------------   有余数  yl111      ----------------------   */
 					if(yb111==1)
-					{		
+					{		/*   ----------------   上次本次都有余数     ----------------------   */
 							if( y111!=y222 )
-							{		
-									
-									if(t666==1){memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));goto cxi222;}
-									p11=y111;p12=y111;p13=y222;/*l111=yl111;*/l222=t111;l333=yl222;/*l11111=l111-1;l22222=l222-1;l33333=l333-1;*/
-									
-									sort22222(ps111,pd111,l222,l333,p11,p12,p13,0);
-									
-									cxi222:
-									t666=0;
-									
-									yl222=yl111;y222=y111;
+							{		/*   ----------------   上次本次都有余数  且上次和本次的余数不同     ----------------------   */
+								
+									if(t666==1){  yb222=2;t666=0;  }else{  yb222=3;t666=0;  }
 							}
 							else
-							{		
+							{		/*   ----------------   上次本次都有余数  且余数相同     ----------------------   */
 
 									if(t666==0)
 									{
+											yb222=5;
 											t666=1;
-											
-											
-											
-											p11=y111-t111;p12=p11;p13=y222;/*l111=yl111;*/l222=t111;l333=yl222;
-											sort22222(ps111,pd111,t111,l333,p11,p12,p13,0);
-											
-											
-											p11=p11-t111;p12=p11;p13=p13-t111;/*l111=yl111;l222=t111;l333=t111+yl222;*/
-											sort22222(ps111,pd111,t111,t111+yl222,p11,p12,p13,1);
 										
 									}else
 									{		
-											
-											p11=y111-t222;p12=p11;p13=y222-t111;/*l111=yl111;l222=t111;l333=t111+yl222;*/
-											sort22222(ps111,pd111,t111,t111+yl222,p11,p12,p13,0);
+											yb222=4;
 									}
-						
-
 							}
-
 					}
 					else
-					{		
-							
-							
-							memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));
-							yb111=1;yl222=yl111;y222=y111;
+					{
+							yb222=1;
 					}
 			}
-			i555=y111-t222*t666;
-			for(i222=0;i222<i555;i222+=t222)
-			{
-					sort22222(ps111,pd111,t111,t111,i222,i222,i222+t111,0);
-			}
+			else{    }    
 			
+			if(    ( o111==1 ) && ( yb222!=0 )    ){  goto  ysk111;  }
+			
+qbk111:		
+
+			if(o111==0) 
+			{
+					i555=y111-t222*t666;
+					for(i222=0;i222<i555;i222+=t222)
+					{
+							sort22222(ps111,pd111,t111,t111,i222,i222,i222+t111);
+					}
+			}
+			else if (o111==2)  
+			{
+					i555=y111-t222*t666-t222;
+					for(i222=i555;i222>=0;i222-=t222)
+					{
+							sort55555(ps111,pd111,t111,t111,i222,i222,i222+t111);
+					}
+					goto  jw111;  
+			}
+			else
+			{  
+
+						i555=y111-t222*t666-t222;
+						for(i222=i555;i222>=0;i222-=t222)
+						{
+								sort55555(ps111,pd111,t111,t111,i222,i222,i222+t111);
+						}
+						goto  jw111; 
+			}  
+
+			
+			
+ysk111:		
+
+
+			if(yb222==1)  
+			{
+					memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));
+					yb111=1;yl222=yl111;y222=y111;
+			}
+			if(yb222==2)  
+			{
+					memcpy(pd111+y111,ps111+y111,yl111*sizeof(int));
+					yl222=yl111;y222=y111;
+			}
+			if(yb222==3)  
+			{
+					p11=y111;p12=y111;p13=y222;l222=t111;l333=yl222;
+					if(o111==0)   {  sort22222(ps111,pd111,l222,l333,p11,p12,p13);  }
+					else          {  sort55555(ps111,pd111,l222,l333,p11,p12,p13);  }
+					yl222=yl111;y222=y111;
+			}
+			if(yb222==4)  
+			{
+					p11=y111-t222;p12=p11;p13=y222-t111;
+					if(o111==0)   {  sort22222(ps111,pd111,t111,t111+yl222,p11,p12,p13);  }
+					else          {  sort55555(ps111,pd111,t111,t111+yl222,p11,p12,p13);  }
+			}
+			if(yb222==5)  
+			{
+					
+					p11=y111-t111;p12=p11;p13=y222;/*l111=yl111;*/l222=t111;l333=yl222;
+
+
+					if(o111==0)   {  sort22222(ps111,pd111,t111,l333,p11,p12,p13);  }
+					else          {  sort55555(ps111,pd111,t111,l333,p11,p12,p13);  }
+			
+					
+					p11=p11-t111;p12=p11;p13=p13-t111;/*l111=yl111;l222=t111;l333=t111+yl222;*/
+					sort33333(ps111,pd111,t111,t111+yl222,p11,p12,p13);
+			}
+
+			if( o111==1 ){  o111=2;  goto  qbk111;  }
+
+
+jw111:
+			/*for(i222=0;i222<i555;i222+=t222)
+			{
+					sort22222(ps111,pd111,t111,t111,i222,i222,i222+t111);
+			}*/
+			if(o111!=0){  o111=0;  }else{  o111=1;  }
 			pt111=ps111;  ps111=pd111;  pd111=pt111;  t111=t111*2;  t222=t111*2;
 		
 	}
-
-
-
-
 	if(yb111==1)
 	{
 			if(t666==1){goto cxi333;}
-			sort22222(ps111,pd111,t111,yl222,0,0,y222,0);
+
+
+			if(o111==0)   {  sort22222(ps111,pd111,t111,yl222,0,0,y222);  }
+			else          {  sort55555(ps111,pd111,t111,yl222,0,0,y222);  }
+
+
+
+			
 			ps111=pd111;
 			cxi333:
 	}
+	
 	if(p!=ps111){  memcpy(p,ps111,n*sizeof(int));  }else{    }
 	
 	if(globalbbb111){  goto  cxttt111;    }	
+	
 	if(n<15)
 	{
 			for(  i111=0;  i111<n;  i111++  ){  printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));  }
@@ -303,16 +394,16 @@ int main(int argc, char *argv[])
 	*(p+20)=253;*(p+21)=523;*(p+22)=333;*(p+23)=555;*(p+24)=729;*(p+25)=6107;*(p+26)=866;*(p+27)=219;*(p+28)=9699999;*(p+29)=909;*/
 
 
-	*(p+0)=1000;*(p+1)=999;*(p+2)=998;*(p+3)=997;*(p+4)=996;*(p+5)=995;*(p+6)=994;*(p+7)=993;*(p+8)=992;*(p+9)=991;
-	*(p+10)=990;*(p+11)=989;*(p+12)=988;*(p+13)=987;*(p+14)=986;*(p+15)=985;*(p+16)=984;*(p+17)=983;*(p+18)=982;*(p+19)=981;
+	*(p+0)=17;*(p+1)=16;*(p+2)=15;*(p+3)=14;*(p+4)=13;*(p+5)=12;*(p+6)=11;*(p+7)=10;*(p+8)=9;*(p+9)=8;
+	*(p+10)=7;*(p+11)=6;*(p+12)=5;*(p+13)=4;*(p+14)=3;*(p+15)=2;*(p+16)=1;*(p+17)=983;*(p+18)=982;*(p+19)=981;
 	*(p+20)=980;*(p+21)=979;*(p+22)=978;*(p+23)=977;*(p+24)=976;*(p+25)=975;*(p+26)=974;*(p+27)=973;*(p+28)=972;*(p+29)=971;
 	*(p+30)=80;*(p+31)=80;
 
 	
-	sort222(p,28);
+	sort222(p,17);
 	
 	
-	for(  i111=0;  i111<28;  i111++  )
+	for(  i111=0;  i111<17;  i111++  )
 	{
 				printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));
 	}
