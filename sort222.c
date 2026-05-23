@@ -1,4 +1,16 @@
-/*A Simple Iterative Merge-Based Sorting Method
+/*
+
+
+
+Please note that the use of this document may require some knowledge of computers or mathematics. I have no copyright claims or restrictions, and of course, I cannot guarantee against any potential losses.
+
+
+
+
+
+
+
+A Simple Iterative Merge-Based Sorting Method
 
 This is a simple sorting method I designed while thinking about binary decomposition properties such as:
 
@@ -409,7 +421,7 @@ jw111:
 	
 	if(p!=ps111){  memcpy(p,ps111,n*sizeof(int));  }else{    }
 	
-	if(globalbbb111){  goto  cxttt111;    }	
+	if(globalbbb111==1){  goto  cxttt111;    }	
 	
 	if(n<15)
 	{
@@ -458,7 +470,7 @@ int main(int argc, char *argv[])
 	
 	for(  i111=0;  i111<17;  i111++  )
 	{
-				printf("jjjjjjjjjjjjjj---%d---\n",*(p+i111));
+				printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  main  print  not  sort222  ---%d---\n",*(p+i111));
 	}
 	free(p);
 	return intreturn;
