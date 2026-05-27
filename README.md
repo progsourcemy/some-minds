@@ -11,7 +11,7 @@ important111
 
 overflowtest.c
 
-demonstrate a methid to  process  overflow.
+demonstrate a method to process overflow (compile with `-ftrapv` to trigger the overflow handler).
 
 
 
