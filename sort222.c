@@ -87,15 +87,15 @@ This is only a technical exploration and experiment.
 
 			For reference only   x86_64 Linux  -O3 -march=native
 					this sort222  performance
-							1 millio Array
+							1 million Array
 									fast
 											a Quicksort  	9.61%
 											lib   qsort     35.29%  
-							10 millio Array
+							10 million Array
 									fast
 											a Quicksort  	7.84%
 											lib   qsort     34.68% 
-							100 millio Array
+							100 million Array
 									fast
 											a Quicksort  	3.28%
 											lib   qsort     33.56%
