@@ -171,11 +171,11 @@ inline __attribute__((always_inline))  void sort22222xxx(  int  *restrict  ps111
 }
 
 
-inline __attribute__((always_inline))  void sortxxxxxx(int  *restrict  ps111,int  *restrict  pd111,size_t l222)
+inline __attribute__((always_inline))  void sortxxxxxx(int  *restrict  ps111,int  *restrict  pd111,size_t l222,size_t l555)
 {
 		int * l22222;  int * l33333;  int * temp111;  int * temp222;  int * temp333;  int * l11111;
 
-		l33333=ps111-l222;  l22222=l33333-l222;  temp111=pd111-1;  temp333=ps111-1;  temp222=temp333-l222;  l11111=pd111-l222-l222;
+		l33333=(ps111-l222)+1;  l22222=l33333-l555;  temp111=pd111;  temp333=ps111;  temp222=l22222+l222-1;  l11111=pd111-l222-l222+1;
 
 		lll222:
 
@@ -199,11 +199,11 @@ inline __attribute__((always_inline))  void sortxxxxxx(int  *restrict  ps111,int
 		return;
 }
 
-inline __attribute__((always_inline))  void sortxxx(int  *restrict  ps111,int  *restrict  pd111,size_t l222)  /*类型扩展*/
+inline __attribute__((always_inline))  void sortxxx(int  *restrict  ps111,int  *restrict  pd111,size_t l222,size_t l555)  /*类型扩展*/
 {
 		int * l22222;  int * l33333;  int * temp111;  int * temp222;  int * temp333;
 
-		l22222=ps111+(l222-1);  l33333=l22222+l222;  temp111=pd111;  temp222=ps111;  temp333=l22222+1;
+		l22222=ps111+(l222-1);  l33333=l22222+l555;  temp111=pd111;  temp222=ps111;  temp333=temp222+l555;
 
 		lll222:
 
@@ -312,7 +312,7 @@ inline __attribute__((always_inline))  void sort22222(int  *restrict  ps111,int 
 
 int sort222(int * p,const size_t n)
 {
-		int * ps111=0;  int * pd111=0;  int * pt111=0;  int * pt555=0;    size_t  p11=0;  size_t yl111=0;  size_t y111=0;  size_t yl222=0;  size_t y222=0;  size_t t111=0;  int tempsw111=0;  /*  前面内容  扩展类型相关  */  size_t i=0;  size_t i222=0;  int * pt1111=0;  int * pt1112=0;  int * pt1113=0;  size_t t222=0;  char t666=0;  char o111=0;  char yb222=0;  size_t nd222=0;  size_t  p12=0;
+		int * ps111=0;  int * pd111=0;  int * pt111=0;  int * pt555=0;    size_t  p11=0;  size_t yl111=0;  size_t y111=0;  size_t yl222=0;  size_t y222=0;  size_t t111=0;  int tempsw111=0;  /*  前面内容  扩展类型相关  */  size_t i=0;  size_t i222=0;  int * pt1111=0;  int * pt1112=0;  int * pt1113=0;  size_t t222=0;  char t666=0;  char o111=0;  char yb222=0;  size_t nd222=0;  size_t  p12=0;  /*  size_t i666=0;  size_t i333=0;  char t777=0;  char i555=0;  size_t i777=0;  */  size_t i888=0;  int * p15=0;
 		
 		if(      n    >    (SIZE_MAX/(sizeof(int)))  /*  前面内容  扩展类型相关  */    )    {  return -1;  }    /*  避免溢出  */
 
@@ -370,8 +370,9 @@ int sort222(int * p,const size_t n)
 		}
 
 		t111=4;  t222=8;  o111=1;  nd222=n/2;
+
 		if(  t222>n  ){  goto rel111;  }
-		
+
 		rel222:
 
 		yl111=(size_t)( n%( t222 ) );
@@ -411,18 +412,43 @@ int sort222(int * p,const size_t n)
 
 		if(  o111==0  )  /*  内存尽量顺序访问  */
 		{
-				i=y111-t222*t666;
-				for(  i222=0;  i222<i;  i222+=t222  )
+				i=y111-t222*t666;  /*i333=i/t222;  i555=i333%2;*/
+				/*if(  i==t222  ){  sortxxx(ps111,pd111,t111,0);  t777=1;  t777=1;  goto  ysk111;  }*/
+				/*if(  i555==0  )
 				{
-						sortxxx(ps111+i222,pd111+i222,t111);
+						t777=0;
+				}
+				else
+				{
+						sortxxx(ps111,pd111,t111,0);  t777=1;
+				}*/
+				i888=i/2;  p15=pd111;
+				for(  i222=0;  i222<i888;  i222+=t111  )
+				{
+						sortxxx(ps111+i222,p15,t111,i888);
+						p15+=t222;
 				}
 		}
-		else    /*  内存尽量逆序访问  有余数或无余数的情况  注意,此时应该对可能造成 size_t  成为负值倾向的情况进行规避.  对应的是  o111==1   或者   o111==2  */
-		{
-				i=y111-t222*t666;
-				for(  i222=i;  i222>0;  i222-=t222  )
+		else
+		{		/*  特别注意 由大向小的循环判断 0  */
+				/*  内存尽量逆序访问  有余数或无余数的情况  注意,此时应该对可能造成 size_t  成为负值倾向的情况进行规避.  对应的是  o111==1  且无余数 ,,,或者   o111==2   经过分析此分支完成后直接跳转  jw111  */
+			
+				i=y111-t222*t666;  /*i333=i/t222;  i555=i333%2;*/
+				/*if(  i==t222  ){  sortxxxxxx(ps111+i,pd111+i,t111,0);  t777=1;  goto  jw111;  }*/
+				/*if(  i555==0  )
 				{
-						sortxxxxxx(ps111+i222,pd111+i222,t111);
+						t777=0;
+				}
+				else
+				{
+						sortxxxxxx(ps111+i,pd111+i,t111,0);  t777=1;
+				}*/
+				if(  i==0  )  {  goto  jw111;  }
+				i888=i/2;  p15=pd111+(i-1);
+				for(  i222=i-1;  i222>i888;  i222-=t111  )
+				{
+						sortxxxxxx(ps111+i222,p15,t111,i888);
+						p15-=t222;
 				}
 				goto  jw111;  /*  前部数据段 处理完成    跳转本次循环结尾处理段  */
 		}
@@ -530,12 +556,15 @@ int sort222(int * p,const size_t n)
 				printf(" %d \r\n",*(p+n-1));
 		}
 		printf("------------------------------------------------------------\r\n ");
+		
+
 		cxttt111:
 
-		 free(pt555);
+		free(pt555);
 
 		return 0;
 }
+
 
 
 int main(int argc, char *argv[])
@@ -543,7 +572,7 @@ int main(int argc, char *argv[])
 	int  intreturn=0;
 	int * p;
 	int i111=0;
-	int i22222=1;
+	int i22222=10;
 	p=malloc(32*sizeof(int));
 	if(p==NULL){ printf("malloc111 error.\r\n");return  -1;}
 	
