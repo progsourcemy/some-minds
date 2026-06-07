@@ -84,8 +84,8 @@ This is only a technical exploration and experiment.
 			Some optimizations.
 2026-06-05
 			Performance optimization and security enhancement
-
-			For reference only   x86_64 Linux  -O3 -march=native
+			
+			old  cpu  For reference only   x86_64 Linux  -O3 -march=native
 					this sort222  performance
 							1 million Array
 									fast
@@ -100,7 +100,10 @@ This is only a technical exploration and experiment.
 											a Quicksort  	3.28%
 											lib   qsort     33.56%
 
-						
+			2026-06-07
+					virtual private serve
+							a Quicksort  fast  sort222  2.5418%
+										
 
 */
 
