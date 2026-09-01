@@ -6,7 +6,7 @@ Please note that the use of this document may require some knowledge of computer
 
 
 
-
+Please note that the sorting method in this file is not a stable sorting method. This is mainly to improve performance as much as possible. We are currently working on a stable sorting version of this method and will release it as soon as possible.
 
 
 
@@ -29,9 +29,10 @@ This is only a technical exploration and experiment.
 2026-09-01
 		Some tests have been completed. It's worth noting that after what I consider extreme optimization, the code complexity has increased significantly, so I still need to frequently review the current code. In one test, the latest version, on a device with a nearly 20-year-old CPU and less than 4GB of RAM, was approximately 12% faster than minimal quicksort, even when sorting three massive ordered sequences with a total size of 201,326,592 random numbers, which is notoriously difficult to sort by merge sort.
 
-						
 
 */
+
+
 
 #include<stdio.h>
 #include <stdint.h>
