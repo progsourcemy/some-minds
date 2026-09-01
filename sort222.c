@@ -6,8 +6,7 @@ Please note that the use of this document may require some knowledge of computer
 
 
 
-Please note that the sorting method in this file is not a stable sorting method. This is mainly to improve performance as much as possible. We are currently working on a stable sorting version of this method and will release it as soon as possible.
-
+Please note that the sorting method in this file is not a stable sorting method. This is mainly to ensure that the sorting method performs as consistently as possible across various situations. A stable sorting version might exhibit significant performance differences when sorting in ascending order versus descending order; one scenario could be quite fast, while the other could be quite slow. We are currently working on a stable sorting version of this method. The stable sorting version should be able to adjust to suit either ascending or descending order scenarios based on parameter requirements and will be released as soon as possible.
 
 
 License / Usage
