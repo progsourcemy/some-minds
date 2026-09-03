@@ -6,7 +6,9 @@ Please note that the use of this document may require some knowledge of computer
 
 
 
-Please note that the sorting method in this file is not a stable sorting method. This is mainly to ensure that the sorting method performs as consistently as possible across various situations. A stable sorting version might exhibit significant performance differences when sorting in ascending order versus descending order; one scenario could be quite fast, while the other could be quite slow. We are currently working on a stable sorting version of this method. The stable sorting version should be able to adjust to suit either ascending or descending order scenarios based on parameter requirements and will be released as soon as possible.
+Please note that the sorting method in this file is not a stable sorting method.
+
+After careful consideration, I've made a significant new discovery. The current sorting method essentially utilizes every performance improvement measure I can think of, achieving performance almost at the peak I've always dreamed of. However, building a stable version on this foundation would require substantial modifications, primarily involving extremely frequent memory jumps, which would likely lead to a significant performance drop. Therefore, in situations requiring stable sorting, I envision leveraging the speed advantages of this sorting method by employing indexing techniques similar to those used in this method to achieve stable sorting functionality.
 
 
 License / Usage
