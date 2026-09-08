@@ -1,6 +1,6 @@
 /*
 
-
+Development and testing primarily use GCC 14 on Debian x86_64 GNU/Linux.
 
 Please note that the use of this document may require some knowledge of computers or mathematics. I have no copyright claims or restrictions, and of course, I cannot guarantee against any potential losses.
 
